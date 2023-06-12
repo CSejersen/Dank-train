@@ -1,6 +1,6 @@
+#define F_CPU 16000000
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#define f_CPU 16000000
 #include <util/delay.h>
 #include "controller.h"
 
@@ -28,14 +28,17 @@ void Controller::initInterupts()
 
 void Controller::startCar()
 {
+    sound->volume(5);
+    _delay_ms(10);
     sound->play(1);
 
-    _delay_ms(10000); // wait for song
+    _delay_ms(6000); // wait for song
     lys->setFrontItens(100);
     lys->setBakItens(20);
     motor->forward(2);
 
     // Acceleration
+    _delay_ms(500);
     motor->forward(3);
     _delay_ms(500);
     motor->forward(4);
@@ -51,23 +54,74 @@ void Controller::reactToInterupts()
             if (controllerCounter == counter) // only true once
             {
                 controllerCounter++;
-                sound->play(2); 
-                // to do
-            }
-
+                sound->play(7); 
+                lys->setFrontItens(0);
+                lys->setBakItens(0);
+			}
+            break;
         case 2:
             if (controllerCounter == counter)
             {
-                sound->play(3); 
-                // to do
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(100);
+                lys->setBakItens(20);
             }
-        
+            break;
+            
+
         case 3:
             if (controllerCounter == counter)
             {
-                sound->play(4); 
-                // to do
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(0);
+                lys->setBakItens(0);
             }
+            break;
+                
+        
+        case 4:
+            if (controllerCounter == counter)
+            {
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(100);
+                lys->setBakItens(20);
+            }
+            break;
+
+        case 5:
+            if (controllerCounter == counter)
+            {
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(0);
+                lys->setBakItens(0);
+            }
+            break;
+        
+        case 6:
+            if (controllerCounter == counter)
+            {
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(100);
+                lys->setBakItens(20);
+            }
+            break;
+
+        case 7:
+            if (controllerCounter == counter)
+            {
+                controllerCounter++;
+                sound->play(7); 
+                lys->setFrontItens(0);
+                lys->setBakItens(0);
+            }
+            break;
+        default:
+            break;
         // flere cases
     }
 }
@@ -75,11 +129,11 @@ void Controller::reactToInterupts()
     ISR(INT2_vect)
     {
         // disable interrupts
-    EIMSK &= ~(1 << INT2);
     EIMSK &= ~(1 << INT3);
+    EIMSK &= ~(1 << INT2);
 
     counter++;
-    _delay_ms(500);
+    _delay_ms(2000);
 
     // reset interrupt flags and enable again
     EIFR |= (1 << INTF2);
@@ -91,11 +145,11 @@ void Controller::reactToInterupts()
 ISR(INT3_vect)
 {
     // disable interrupts
-    EIMSK &= ~(1 << INT2);
     EIMSK &= ~(1 << INT3);
+    EIMSK &= ~(1 << INT2);
 
     counter++;
-    _delay_ms(400);
+    _delay_ms(2000);
 
     // reset interrupt flags and enable again
     EIFR |= (1 << INTF3);

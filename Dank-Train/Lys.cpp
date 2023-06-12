@@ -28,7 +28,6 @@ void Lys::setFrontItens(int intensitet){
 
 
 // Takes % intensity returns pwm on portb ben 5
-void Lys::setFrontItens(int intensitet){
 void Lys::setBakItens(int intensitet){
 	
 	if (intensitet >= 0 || intensitet <= 100){

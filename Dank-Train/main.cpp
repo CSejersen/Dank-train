@@ -1,6 +1,5 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include "motorstyring.h"
 #include "lys.h"
 #include "sound.h"

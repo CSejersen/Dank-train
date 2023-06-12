@@ -1,5 +1,4 @@
 #pragma once
-
 #include "motorstyring.h"
 #include "sound.h"
 #include "lys.h"

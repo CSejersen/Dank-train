@@ -18,15 +18,12 @@
 * Authors:                                                  *
 * Kenny Le, Thomas Bové                                     *
 ************************************************************/
-#pragma once
-#define F_CPU 16000000
 #include "Sound.h"
 #include <avr/io.h>
 using namespace std;
-#include <util/delay.h>
 #include <avr/interrupt.h>
-#define DDR   DDRE
-#define PORT PORTE
+// #define DDR   DDRE
+// #define PORT PORTE
 #define PINNR 1
 #define BAUD  9600
 #define NO_us 1000000/BAUD
