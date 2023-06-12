@@ -37,6 +37,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../controller.cpp \
 ../Lys.cpp \
 ../main.cpp \
 ../motor.cpp \
@@ -51,6 +52,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+controller.o \
 Lys.o \
 main.o \
 motor.o \
@@ -58,6 +60,7 @@ Sound.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
+controller.o \
 Lys.o \
 main.o \
 motor.o \
@@ -65,6 +68,7 @@ Sound.o \
 uart.o
 
 C_DEPS +=  \
+controller.d \
 Lys.d \
 main.d \
 motor.d \
@@ -72,6 +76,7 @@ Sound.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
+controller.d \
 Lys.d \
 main.d \
 motor.d \
@@ -92,6 +97,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+./controller.o: .././controller.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./Lys.o: .././Lys.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0

@@ -28,7 +28,7 @@ using namespace std;
 #define DDR   DDRE
 #define PORT PORTE
 #define PINNR 1
-#define BAUD  9600:
+#define BAUD  9600
 #define NO_us 1000000/BAUD
 extern "C" {
 	#include "uart.h"

@@ -17,7 +17,9 @@ public:
     void initInterupts();
 
 private:
+    // ensures each new case in reactToInterupts() only runs once
     int controllerCounter;
+
     // driver pointers
     Motor *motor;
     Sound *sound; 

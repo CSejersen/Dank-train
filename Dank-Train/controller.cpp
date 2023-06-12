@@ -1,5 +1,7 @@
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #define f_CPU 16000000
-#include <util/_delay_ms.h>
+#include <util/delay.h>
 #include "controller.h"
 
 int counter = 0;
@@ -28,7 +30,7 @@ void Controller::startCar()
 {
     sound->play(1);
 
-    _delay_ms(10000);
+    _delay_ms(10000); // wait for song
     lys->setFrontItens(100);
     lys->setBakItens(20);
     motor->forward(2);
@@ -46,7 +48,7 @@ void Controller::reactToInterupts()
 {
     switch (counter) {
         case 1:
-            if (controllerCounter == counter)
+            if (controllerCounter == counter) // only true once
             {
                 controllerCounter++;
                 sound->play(2); 
@@ -56,18 +58,25 @@ void Controller::reactToInterupts()
         case 2:
             if (controllerCounter == counter)
             {
-                sound->play(2); 
+                sound->play(3); 
                 // to do
             }
-
+        
+        case 3:
+            if (controllerCounter == counter)
+            {
+                sound->play(4); 
+                // to do
+            }
         // flere cases
     }
+}
 
     ISR(INT2_vect)
     {
         // disable interrupts
-    EIMSK &= ~(1 << INT3);
     EIMSK &= ~(1 << INT2);
+    EIMSK &= ~(1 << INT3);
 
     counter++;
     _delay_ms(500);

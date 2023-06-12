@@ -1,10 +1,4 @@
-/*
- * Lys.cpp
- *
- * Created: 24-05-2023 16:14:05
- *  Author: emili
- */ 
-
+#pragma once
 class Lys
 {
 	//Funktioner
@@ -18,6 +12,4 @@ class Lys
 	int frontLys;
 	int bakLys;
 
-}; //Lys
-
-//#endif //__LIGHT_H__
+}; 
