@@ -14,7 +14,8 @@ controller.d controller.o: .././controller.cpp \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././controller.h .././motorstyring.h .././sound.h .././lys.h
+ .././controller.h .././motordriver.h .././sounddriver.h \
+ .././lightdriver.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -48,8 +49,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././controller.h:
 
-.././motorstyring.h:
+.././motordriver.h:
 
-.././sound.h:
+.././sounddriver.h:
 
-.././lys.h:
+.././lightdriver.h:

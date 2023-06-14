@@ -17,36 +17,15 @@ MotorDriver::MotorDriver(){
 void MotorDriver::forward(unsigned char speed){
     unsigned char s = speed;
     if (s != 1 && s != 2 && s !=3 && s !=4 && s !=5 && s !=6){
+        //default værdi
+        OCR3A = 300;
         return;
     }
     // PB ben 1 styrer retning på motor
     PORTB |= 0b00000001;
 
-    switch (s) {
-        case 1:
-        OCR3A = 50;
-        return;
-        
-        case 2:
-        OCR3A = 100;
-        return;
-
-        case 3:
-        OCR3A = 200;
-        return;
-
-        case 4:
-        OCR3A = 400;
-        return;
-
-        case 5:
-        OCR3A = 800;
-        return;
-
-        case 6:
-        OCR3A = 1020;
-        return;
-    }
+    // Duty cycle sættes
+    OCR3A = s/6*1024;
 }
 
 void MotorDriver::backward(unsigned char speed){
@@ -60,35 +39,13 @@ void MotorDriver::backward(unsigned char speed){
      // PB ben 1 styrer retning på motor
     PORTB &= 11111110;
 
-    switch (s) {
-        case 1:
-        OCR3A = 50;
-        return;
-        
-        case 2:
-        OCR3A = 100;
-        return;
+    // Duty cycle sættes
+    OCR3A = s/6*1024;
 
-        case 3:
-        OCR3A = 200;
-        return;
-
-        case 4:
-        OCR3A = 400;
-        return;
-
-        case 5:
-        OCR3A = 800;
-        return;
-
-        case 6:
-        OCR3A = 1020;
-        return;
-}
 }
 
 void MotorDriver::stop(){
-    
+
     OCR3A = 0;
 }
 
