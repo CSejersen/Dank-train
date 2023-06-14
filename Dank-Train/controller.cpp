@@ -33,8 +33,8 @@ void Controller::startCar()
     //sound->play(1);
 
     _delay_ms(6000); // wait for song
-    lys->setFrontItens(100);
-    lys->setBakItens(20);
+    lys->setFrontItens(43);
+    lys->setBakItens(10);
     motor->forward(2);
 
     // Acceleration
@@ -100,6 +100,7 @@ void Controller::reactToInterupts()
                 controllerCounter++;
                 sound->play(7); 
                 motor->backward(5);
+                lys->setBakItens(52);
             }
             break;
 
@@ -107,6 +108,8 @@ void Controller::reactToInterupts()
             if (controllerCounter == counter)
             {
                 controllerCounter++;
+                _delay_ms(300);
+                lys->setBakItens(10);
 				
                 
             }
@@ -139,6 +142,8 @@ void Controller::reactToInterupts()
 			{
 				controllerCounter++;
 				motor->stop();
+                lys->setBakItens(0);
+                lys->setFrontItens(0);
 			}
 			break;
         default:
