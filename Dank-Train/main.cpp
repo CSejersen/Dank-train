@@ -1,15 +1,15 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include "motorstyring.h"
-#include "lys.h"
-#include "sound.h"
+#include "motordriver.h"
+#include "lightdriver.h"
+#include "sounddriver.h"
 #include "controller.h"
 
 int main(){
      
-    Motor motor;
-    Sound sound;
-    Lys lys;
+    MotorDriver motor;
+    SoundDriver sound;
+    LightDriver lys;
     Controller controller(&motor, &sound, &lys);
 
     controller.startCar();

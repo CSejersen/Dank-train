@@ -149,31 +149,31 @@
     <Compile Include="controller.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Lys.cpp">
+    <Compile Include="lightdriver.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Lys.h">
+    <Compile Include="lightdriver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="motor.cpp">
+    <Compile Include="motordriver.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="motorstyring.h">
+    <Compile Include="motordriver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Sound.cpp">
+    <Compile Include="sounddriver.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Sound.h">
+    <Compile Include="sounddriver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.c">
+    <Compile Include="uartdriver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.h">
+    <Compile Include="uartdriver.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
