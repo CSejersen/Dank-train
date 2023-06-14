@@ -1,9 +1,9 @@
 #pragma once
 
-class Motor{
+class MotorDriver{
 
 public:
-    Motor();
+    MotorDriver();
     void forward(unsigned char speed);
     void backward(unsigned char speed);
     void stop();

@@ -18,7 +18,7 @@
 * Authors:                                                  *
 * Kenny Le, Thomas Bové                                     *
 ************************************************************/
-#include "Sound.h"
+#include "sounddriver.h"
 #include <avr/io.h>
 using namespace std;
 #include <avr/interrupt.h>
@@ -28,25 +28,25 @@ using namespace std;
 #define BAUD  9600
 #define NO_us 1000000/BAUD
 extern "C" {
-	#include "uart.h"
+	#include "uartdriver.h"
 }
 
-// Sound som Klasse
-void Sound::play(unsigned char param) {
+// SoundDriver som Klasse
+void SoundDriver::play(unsigned char param) {
 	CMD = 0x0F;
 	PARA1 = 0x01;
 	PARA2 = param;
 	checksum();
 	send();
 }
-void Sound::pause() {
+void SoundDriver::pause() {
 	CMD = 0x16;
 	PARA1 = 0x00;
 	PARA2 = 0x00;
 	checksum();
 	send();
 }
-void Sound::volume(unsigned char param) {
+void SoundDriver::volume(unsigned char param) {
 	CMD = 0x06;
 	PARA1 = 0x00;
 	PARA2 = param;
@@ -54,12 +54,12 @@ void Sound::volume(unsigned char param) {
 	send();
 }
 
-void Sound::checksum() {
+void SoundDriver::checksum() {
 	CHECKSUM = (0xFFFF-(CMD+FEEDBACK+PARA1+PARA2)+1);
 	CHECKSUM1 = (CHECKSUM >> 8);
 	CHECKSUM2 = (CHECKSUM & 0xff);
 }
-void Sound::send() {
+void SoundDriver::send() {
 	SendChar(START);
 	SendChar(CMD);
 	SendChar(FEEDBACK);
@@ -69,7 +69,7 @@ void Sound::send() {
 	SendChar(CHECKSUM2);
 	SendChar(END);
 }
-Sound::Sound() {
+SoundDriver::SoundDriver() {
 	START = 0x7E;
 	FEEDBACK = 0;
 	END = 0xEF;

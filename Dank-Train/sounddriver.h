@@ -5,18 +5,19 @@
 
 #pragma once
 
-class Sound {
-	private: 
+class SoundDriver {
+private: 
 	unsigned char START, FEEDBACK, END, CMD, PARA1, PARA2, CHECKSUM1, CHECKSUM2;
 	unsigned int CHECKSUM;
 	void send();
 	void checksum();
-	public:
+
+public:
 	void play(unsigned char);
 	void pause();
 	void volume(unsigned char);
 	
 	
-    Sound();
+    SoundDriver();
 
 };

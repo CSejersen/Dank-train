@@ -1,12 +1,12 @@
 #include "avr/io.h"
-#include "Lys.h"
+#include "lightdriver.h"
 
 // default constructor
-Lys::Lys()
+LightDriver::LightDriver()
 {
 	DDRB = 0xFF;
-	setFrontItens(0);
-	setBakItens(0);
+	setFrontLight(0);
+	setBackLight(0);
 	TCCR0A = 0b10000011;
 	TCCR0B = 0b00000011;
 	
@@ -16,26 +16,26 @@ Lys::Lys()
 }
 
 // Takes % intensity returns pwm on portb ben 7
-void Lys::setFrontItens(int intensitet){
+void LightDriver::setFrontLight(int intensitet){
 	if (intensitet >= 0 || intensitet <= 100){
-		frontLys = intensitet;
+		frontLight = intensitet;
 	}
 	else{
-		frontLys = 1;
+		frontLight = 1;
 	}
-	OCR0A = (255 / 100) * frontLys;
+	OCR0A = (255 / 100) * frontLight;
 }
 
 
 // Takes % intensity returns pwm on portb ben 5
-void Lys::setBakItens(int intensitet){
+void LightDriver::setBackLight(int intensitet){
 	
 	if (intensitet >= 0 || intensitet <= 100){
-		bakLys = intensitet;
+		backLight = intensitet;
 	}
 	else{
-		bakLys = 1;
+		backLight = 1;
 	}
 	
-	OCR1A = (255 / 100) * bakLys;
+	OCR1A = (255 / 100) * backLight;
 }

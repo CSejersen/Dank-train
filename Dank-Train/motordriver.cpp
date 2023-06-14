@@ -1,8 +1,8 @@
-#include "motorstyring.h"
+#include "motorDriver.h"
 #include <avr/io.h> 
 
  // PE output and set to 0
-Motor::Motor(){
+MotorDriver::MotorDriver(){
 	  DDRE = 0xFF;
 	  PORTE = 0;
 	  // Mode = 3 (PWM, Phase Correct, 10 bit)
@@ -14,11 +14,12 @@ Motor::Motor(){
 	  OCR3A = 0;
 }
 
-void Motor::forward(unsigned char speed){
+void MotorDriver::forward(unsigned char speed){
     unsigned char s = speed;
     if (s != 1 && s != 2 && s !=3 && s !=4 && s !=5 && s !=6){
         return;
     }
+    // PB ben 1 styrer retning på motor
     PORTB |= 0b00000001;
 
     switch (s) {
@@ -33,7 +34,7 @@ void Motor::forward(unsigned char speed){
         case 3:
         OCR3A = 200;
         return;
-s
+
         case 4:
         OCR3A = 400;
         return;
@@ -48,7 +49,7 @@ s
     }
 }
 
-void Motor::backward(unsigned char speed){
+void MotorDriver::backward(unsigned char speed){
 
     unsigned char s = speed;
 
@@ -56,6 +57,7 @@ void Motor::backward(unsigned char speed){
         return;
     }
 
+     // PB ben 1 styrer retning på motor
     PORTB &= 11111110;
 
     switch (s) {
@@ -85,12 +87,9 @@ void Motor::backward(unsigned char speed){
 }
 }
 
-void Motor::stop(){
-    while(OCR3A > 50){
-        OCR3A = OCR3A/2;
-        // sleep
-    }
+void MotorDriver::stop(){
     
     OCR3A = 0;
 }
+
 

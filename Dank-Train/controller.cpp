@@ -6,7 +6,7 @@
 
 int counter = 0;
 
-Controller::Controller(Motor *motor, Sound *sound, Lys *lys){
+Controller::Controller(MotorDriver *motor, SoundDriver *sound, LightDriver *lys){
     
     this->motor = motor; 
     this->sound = sound;
@@ -108,7 +108,6 @@ void Controller::reactToInterupts()
             if (counterCheck == counter)
             {
                 counterCheck++;
-                _delay_ms(300);
 				
                 
             }
