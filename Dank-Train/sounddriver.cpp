@@ -1,8 +1,8 @@
 /************************************************************
 * Software til SOMO kontrol                                 *
-* Den første er kommandoens nummer (liste herunder)         *
-* Den anden er en parameter-værdi, hvis betydning           *
-* afhænger af kommandoen.                                   *
+* Den fÃ¸rste er kommandoens nummer (liste herunder)         *
+* Den anden er en parameter-vÃ¦rdi, hvis betydning           *
+* afhÃ¦nger af kommandoen.                                   *
 * Kommandoer:                                               *
   play:                                                     *
   Funktion:  Afspiller en valgt sang. Hardcoded til Folder 1*
@@ -11,12 +11,12 @@
   Funktion:  Stopper afspilning                             *
   Parameter: Bruges ikke                                    *
   volume:                                                   *
-  Funktion:  Indstiller lydstyrken til en bestemt værdi     *
-  Parameter: Bestemmer hvad lydstyrken sættes til (0-30)    *
+  Funktion:  Indstiller lydstyrken til en bestemt vÃ¦rdi     *
+  Parameter: Bestemmer hvad lydstyrken sÃ¦ttes til (0-30)    *
                                                             *  
 * Dato oprettet (ISO): 2023-05-12                           *
 * Authors:                                                  *
-* Kenny Le, Thomas Bové                                     *
+* Kenny Le, Thomas BovÃ©                                     *
 ************************************************************/
 #include "sounddriver.h"
 #include <avr/io.h>
@@ -39,13 +39,7 @@ void SoundDriver::play(unsigned char param) {
 	checksum();
 	send();
 }
-void SoundDriver::pause() {
-	CMD = 0x16;
-	PARA1 = 0x00;
-	PARA2 = 0x00;
-	checksum();
-	send();
-}
+
 void SoundDriver::volume(unsigned char param) {
 	CMD = 0x06;
 	PARA1 = 0x00;
