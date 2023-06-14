@@ -28,9 +28,9 @@ void Controller::initInterupts()
 
 void Controller::startCar()
 {
-    sound->volume(5);
+    sound->volume(30);
     _delay_ms(10);
-    sound->play(1);
+    //sound->play(1);
 
     _delay_ms(6000); // wait for song
     lys->setFrontItens(100);
@@ -38,12 +38,13 @@ void Controller::startCar()
     motor->forward(2);
 
     // Acceleration
-    _delay_ms(500);
+    _delay_ms(300);
     motor->forward(3);
-    _delay_ms(500);
+    _delay_ms(300);
     motor->forward(4);
-    _delay_ms(500);
-    motor->forward(5);
+    _delay_ms(300);
+	motor->forward(5);
+	
 }
 
 
@@ -55,8 +56,6 @@ void Controller::reactToInterupts()
             {
                 controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(0);
-                lys->setBakItens(0);
 			}
             break;
         case 2:
@@ -64,8 +63,6 @@ void Controller::reactToInterupts()
             {
                 controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(100);
-                lys->setBakItens(20);
             }
             break;
             
@@ -75,8 +72,7 @@ void Controller::reactToInterupts()
             {
                 controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(0);
-                lys->setBakItens(0);
+				motor->forward(5);
             }
             break;
                 
@@ -86,18 +82,15 @@ void Controller::reactToInterupts()
             {
                 controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(100);
-                lys->setBakItens(20);
+				motor->forward(3);
             }
             break;
 
         case 5:
             if (controllerCounter == counter)
             {
-                controllerCounter++;
+               controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(0);
-                lys->setBakItens(0);
             }
             break;
         
@@ -106,8 +99,7 @@ void Controller::reactToInterupts()
             {
                 controllerCounter++;
                 sound->play(7); 
-                lys->setFrontItens(100);
-                lys->setBakItens(20);
+                motor->backward(5);
             }
             break;
 
@@ -115,11 +107,40 @@ void Controller::reactToInterupts()
             if (controllerCounter == counter)
             {
                 controllerCounter++;
-                sound->play(7); 
-                lys->setFrontItens(0);
-                lys->setBakItens(0);
+				
+                
             }
+			break;
+			
+		case 8:
+			if (controllerCounter == counter)
+			{
+				controllerCounter++;
+				sound->play(7);
+				motor->forward(3);
+			}
             break;
+		case 9:
+			if (controllerCounter == counter)
+			{
+				controllerCounter++;
+				motor->forward(5);
+			}
+			break;
+			
+		case 10:
+			if (controllerCounter == counter)
+			{
+				controllerCounter++;
+			}
+			break;
+		case 11:
+			if (controllerCounter == counter)
+			{
+				controllerCounter++;
+				motor->stop();
+			}
+			break;
         default:
             break;
         // flere cases
@@ -133,7 +154,7 @@ void Controller::reactToInterupts()
     EIMSK &= ~(1 << INT2);
 
     counter++;
-    _delay_ms(2000);
+    _delay_ms(500);
 
     // reset interrupt flags and enable again
     EIFR |= (1 << INTF2);
@@ -149,7 +170,7 @@ ISR(INT3_vect)
     EIMSK &= ~(1 << INT2);
 
     counter++;
-    _delay_ms(2000);
+    _delay_ms(500);
 
     // reset interrupt flags and enable again
     EIFR |= (1 << INTF3);
