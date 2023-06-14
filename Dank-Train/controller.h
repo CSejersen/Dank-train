@@ -17,7 +17,7 @@ public:
 
 private:
     // ensures each new case in reactToInterupts() only runs once
-    int controllerCounter;
+    int counterCheck;
 
     // driver pointers
     Motor *motor;

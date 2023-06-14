@@ -12,7 +12,7 @@ Controller::Controller(Motor *motor, Sound *sound, Lys *lys){
     this->sound = sound;
     this->lys = lys;
 
-    controllerCounter = 1;
+    counterCheck = 1;
     
     initInterupts();
 }
@@ -52,96 +52,98 @@ void Controller::reactToInterupts()
 {
     switch (counter) {
         case 1:
-            if (controllerCounter == counter) // only true once
+            if (counterCheck == counter) // only true once
             {
-                controllerCounter++;
-                sound->play(7); 
+                counterCheck++;
+                sound->play(2); 
 			}
             break;
         case 2:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-                controllerCounter++;
-                sound->play(7); 
+                counterCheck++;
+                sound->play(2); 
             }
             break;
             
 
         case 3:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-                controllerCounter++;
-                sound->play(7); 
+                counterCheck++;
+                sound->play(2); 
 				motor->forward(5);
             }
             break;
                 
         
         case 4:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-                controllerCounter++;
-                sound->play(7); 
+                counterCheck++;
+                sound->play(2); 
 				motor->forward(3);
             }
             break;
 
         case 5:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-               controllerCounter++;
-                sound->play(7); 
+               counterCheck++;
+                sound->play(2); 
             }
             break;
         
         case 6:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-                controllerCounter++;
-                sound->play(7); 
+                counterCheck++;
+                sound->play(2); 
                 motor->backward(5);
                 lys->setBakItens(52);
             }
             break;
 
         case 7:
-            if (controllerCounter == counter)
+            if (counterCheck == counter)
             {
-                controllerCounter++;
+                counterCheck++;
                 _delay_ms(300);
-                lys->setBakItens(10);
 				
                 
             }
 			break;
 			
 		case 8:
-			if (controllerCounter == counter)
+			if (counterCheck == counter)
 			{
-				controllerCounter++;
-				sound->play(7);
+				counterCheck++;
+				sound->play(2);
 				motor->forward(3);
+                lys->setBakItens(10);
 			}
             break;
 		case 9:
-			if (controllerCounter == counter)
+			if (counterCheck == counter)
 			{
-				controllerCounter++;
+				counterCheck++;
 				motor->forward(5);
 			}
 			break;
 			
 		case 10:
-			if (controllerCounter == counter)
+			if (counterCheck == counter)
 			{
-				controllerCounter++;
+				counterCheck++;
+				sound->play(2);
 			}
 			break;
 		case 11:
-			if (controllerCounter == counter)
+			if (counterCheck == counter)
 			{
-				controllerCounter++;
+				counterCheck++;
 				motor->stop();
+                sound->play(3);
                 lys->setBakItens(0);
                 lys->setFrontItens(0);
 			}

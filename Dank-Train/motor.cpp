@@ -1,7 +1,7 @@
 #include "motorstyring.h"
 #include <avr/io.h> 
 
- // PB outputs and set to 0
+ // PE output and set to 0
 Motor::Motor(){
 	  DDRE = 0xFF;
 	  PORTE = 0;
@@ -11,7 +11,7 @@ Motor::Motor(){
 	  TCCR3A = 0b10000011;
 	  TCCR3B = 0b00000011;
 	  // Duty cycle = 0%
-	  OCR3B = 0;
+	  OCR3A = 0;
 }
 
 void Motor::forward(unsigned char speed){
@@ -33,7 +33,7 @@ void Motor::forward(unsigned char speed){
         case 3:
         OCR3A = 200;
         return;
-
+s
         case 4:
         OCR3A = 400;
         return;
