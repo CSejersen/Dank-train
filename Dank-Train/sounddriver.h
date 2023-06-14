@@ -1,6 +1,6 @@
 /*
  * Created: 24-05-2023 12:37:00
- *  Author: Thomas Bové
+ *  Author: Thomas BovÃ©
  */ 
 
 #pragma once
@@ -14,7 +14,6 @@ private:
 
 public:
 	void play(unsigned char);
-	void pause();
 	void volume(unsigned char);
 	
 	
